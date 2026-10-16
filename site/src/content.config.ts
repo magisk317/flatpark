@@ -3,7 +3,8 @@ import { glob } from 'astro/loaders';
 
 // The docs library is the repo's top-level `docs/`, read in place: agents read
 // those files from the repo and the site renders the same files, so there is
-// nothing to sync. `internal/` holds operations notes and is never published.
+// nothing to sync. `internal/` (operations notes) and `specs/` (plans being
+// worked through) stay in the repo and are never published.
 //
 // The id is the path without `.md`, kept verbatim. The default id generator
 // slugifies (lowercasing `zh-Hans`, dropping the dot in `guide.zh-Hans`), and
@@ -11,7 +12,7 @@ import { glob } from 'astro/loaders';
 // section and the file to link for editing.
 const docs = defineCollection({
   loader: glob({
-    pattern: ['**/*.md', '!internal/**'],
+    pattern: ['**/*.md', '!internal/**', '!specs/**'],
     base: '../docs',
     generateId: ({ entry }) => entry.replace(/\.md$/, ''),
   }),

@@ -198,9 +198,9 @@ assert_contains "$index" "/docs/project/legal/"
 # Relative .md links become site URLs; links out of docs/ go to GitHub.
 assert_contains "$docs/packagers/playbook/index.html" 'href="/docs/packagers/publishing/"'
 assert_contains "$docs/packagers/playbook/index.html" "github.com/flatpark/flatpark/tree/main/registry/"
-# A section index lists its pages; internal/ is never published.
+# A section index lists its pages; internal/ and specs/ are never published.
 assert_contains "$docs/packagers/index.html" "docs-cards"
-[ ! -e "$docs/internal" ] || { echo "FAIL: docs/internal was published"; exit 1; }
+for d in internal specs; do [ ! -e "$docs/$d" ] || { echo "FAIL: docs/$d was published"; exit 1; }; done
 # A translation replaces its page under the locale, with localised links.
 assert_contains "$site_out/zh-Hans/docs/users/guide/index.html" "用户指南"
 assert_contains "$site_out/zh-Hans/docs/users/guide/index.html" 'href="/zh-Hans/docs/project/trust/"'

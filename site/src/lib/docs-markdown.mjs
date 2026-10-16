@@ -3,7 +3,7 @@
 // Docs link to each other with relative `.md` paths, so the links work on
 // GitHub and for an agent reading the repo. Here they become site URLs:
 //   - a published doc  -> its /docs/ URL, under the page's locale prefix;
-//   - anything else in the repo (registry/, scripts/, docs/internal/)
+//   - anything else in the repo (registry/, scripts/, docs/internal/, docs/specs/)
 //     -> the file on GitHub;
 //   - a target that doesn't exist -> the build fails (docsLinkCheck).
 // Root-relative site links (`/setup/`) get the locale prefix in a translation.
@@ -62,7 +62,7 @@ export function docsLinkCheck({ docsRoot, repoRoot }) {
 
 /** Plugin factory: returns the plugin for files under `docsRoot`, nothing otherwise. */
 export function docsMarkdownPlugin({ docsRoot, repoRoot, repoUrl }) {
-  const internal = resolve(docsRoot, 'internal');
+  const unpublished = ['internal', 'specs'].map((d) => resolve(docsRoot, d) + sep);
   return (factory) => {
     const src = factory.fileURL && fileURLToPath(factory.fileURL);
     if (!src || !src.startsWith(docsRoot + sep)) return null;
@@ -80,7 +80,7 @@ export function docsMarkdownPlugin({ docsRoot, repoRoot, repoUrl }) {
         return url; // reported by docsLinkCheck
       }
       const published =
-        target.startsWith(docsRoot + sep) && !target.startsWith(internal + sep) && target.endsWith('.md');
+        target.startsWith(docsRoot + sep) && !unpublished.some((d) => target.startsWith(d)) && target.endsWith('.md');
       if (published) {
         const { base } = splitDocId(relative(docsRoot, target).replace(/\.md$/, ''));
         return prefix + docUrl(base) + hash;

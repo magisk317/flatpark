@@ -13,7 +13,6 @@ the details below it. The same files are rendered at
 - [Reviewers](reviewers/README.md): how PRs are checked and tested.
 - [Reference](reference/README.md): records and lookup tables.
 - [Project](project/README.md): what FlatPark is, its policies and rules.
-- [Specs](specs/README.md): design documents for larger changes.
 
 ## For agents
 
@@ -23,5 +22,5 @@ the details below it. The same files are rendered at
 - Reviewing a PR: follow the [review runbook](reviewers/review-runbook.md).
 - Link between pages with relative `.md` paths. The site rewrites them, and the
   build fails on a link to a page that doesn't exist.
-- Pages under `internal/` are operations notes. They stay in the repository and
-  are not published.
+- `specs/` holds the plans being worked through, one step at a time, and
+  `internal/` holds operations notes. Neither is published on the site.

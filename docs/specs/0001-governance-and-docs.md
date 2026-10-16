@@ -1,8 +1,3 @@
----
-description: "No human gate on every PR: a testing playbook built from past incidents, testers only where we can't test, and one docs library."
-order: 1
----
-
 # Spec 0001: Governance, testing and documentation
 
 - **Status:** accepted direction; being built. This replaces the RFC draft first
@@ -14,12 +9,9 @@ order: 1
 
 ## Goal
 
-FlatPark is a Flatpak remote that runs efficiently and is easy to take part in.
-
-Speed is the main reason it exists. Apps often land minutes after an upstream
-release, and a fix reaches users just as fast. Every rule in this spec is judged
-by two questions: does it stop us shipping our own bugs, and does it keep that
-speed?
+The project's goal is in [About FlatPark](../project/about.md#goal): an efficient,
+easy-to-join Flatpak remote, where speed matters most. Every decision below is
+weighed against it.
 
 ## Decisions
 
@@ -242,7 +234,7 @@ docs/
   reviewers/       review runbook, testing playbook, batch changes
   reference/       common solutions, incident list
   project/         about, principles, governance, security, legal, conduct
-  specs/           design specs like this one
+  specs/           plans being worked through, like this one; not published
   internal/        operations notes; not published
 ```
 

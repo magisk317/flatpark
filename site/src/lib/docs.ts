@@ -34,7 +34,7 @@ export interface NavSection {
 }
 
 // Sidebar order. A new top-level directory still shows up, after these.
-const SECTION_ORDER = ['users', 'developers', 'packagers', 'reviewers', 'reference', 'project', 'specs'];
+const SECTION_ORDER = ['users', 'developers', 'packagers', 'reviewers', 'reference', 'project'];
 
 /** The page's `# H1`, which is its title on GitHub as well. */
 function titleOf(entry: Entry): string {
