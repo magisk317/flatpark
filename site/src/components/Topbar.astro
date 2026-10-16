@@ -73,6 +73,13 @@ const langLinks = locales.map((l) => ({
       </div>
     </div>
 
+    <a
+      href={localizePath('/docs/', lang)}
+      class="hidden h-10 shrink-0 items-center rounded-lg px-3 text-sm font-semibold text-muted hover:bg-canvas hover:text-ink sm:inline-flex"
+    >
+      {t('nav.docs')}
+    </a>
+
     <button
       type="button"
       data-theme-toggle

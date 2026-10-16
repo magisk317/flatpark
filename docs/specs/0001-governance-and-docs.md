@@ -1,3 +1,8 @@
+---
+description: "No human gate on every PR: a testing playbook built from past incidents, testers only where we can't test, and one docs library."
+order: 1
+---
+
 # Spec 0001: Governance, testing and documentation
 
 - **Status:** accepted direction; being built. This replaces the RFC draft first
@@ -241,11 +246,13 @@ docs/
   internal/        operations notes; not published
 ```
 
-- The directory is the sidebar. Each page has `title`, `description` and `order`
-  in its front matter, and each directory has an `_index.md` with its title and
-  order. A page with `publish: false` stays in the repo only.
-- Links are relative `.md` paths, so they work on GitHub and for an agent; the site
-  rewrites them to its own URLs, and link-check catches broken ones.
+- The directory is the sidebar. A page's title is its own `# H1`, so it reads
+  the same on GitHub; front matter only carries `description` and `order`. Each
+  directory's `README.md` introduces it, and the site lists the directory's pages
+  under it. A page with `publish: false` stays in the repo only.
+- Links are relative `.md` paths, so they work on GitHub and for an agent. The
+  site rewrites them to its own URLs, links out of `docs/` go to the file on
+  GitHub, and a link to a file that doesn't exist fails the build.
 - **Short first, detail after.** Each page opens with what a person needs, in a few
   plain paragraphs. Rules, edge cases and checks follow under `## Details`, which
   the site folds away. Pages that are only reference (the playbook, the incident
@@ -255,7 +262,7 @@ docs/
   each page's Markdown source is served next to it. `AGENTS.md` at the repo root
   points to `docs/README.md`.
 - **Language:** English is the source. User- and developer-facing pages get a
-  zh-Hans translation next to the English file (`install.zh-Hans.md`); the rest
+  zh-Hans translation next to the English file (`guide.zh-Hans.md`); the rest
   falls back to English.
 
 ### What the docs need to say
